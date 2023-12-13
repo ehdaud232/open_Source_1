@@ -1,7 +1,7 @@
 import requests
 
 api_key = 'RGAPI-4ccb12a4-bbf2-4107-aa40-e05ccca889b5'
-summoner_name = '빠빠짜따까바짜까'
+summoner_name = (input('닉네임을 입력하세요 : '))
 
 url = f'https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/{summoner_name}?api_key={api_key}'
 response = requests.get(url)
@@ -17,7 +17,6 @@ if response.status_code == 200:
     if rank_response.status_code == 200:
         rank_data = rank_response.json()
         if rank_data:
-            print(f"Summoner Name: {summoner_name}")
             for entry in rank_data:
                 if entry['queueType'] == 'RANKED_SOLO_5x5':
                     
